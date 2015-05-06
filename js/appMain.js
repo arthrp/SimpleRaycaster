@@ -1,13 +1,13 @@
 const Keys = {
-	get Up(){ return 38; },
-	get Down(){ return 40; },
-	get Right(){ return 39; },
-	get Left(){ return 37; },
-	
-	get W(){ return 87; },
-	get A(){ return 65; },
-	get S(){ return 83; },
-	get D(){ return 68; }
+    get Up(){ return 38; },
+    get Down(){ return 40; },
+    get Right(){ return 39; },
+    get Left(){ return 37; },
+    
+    get W(){ return 87; },
+    get A(){ return 65; },
+    get S(){ return 83; },
+    get D(){ return 68; }
 };
 
 var Player = function(x,y){
@@ -32,7 +32,7 @@ var Player = function(x,y){
     
     self.init = function(){
         document.addEventListener("keydown", self.handleKeyDown, false);
-		document.addEventListener("keyup", self.handleKeyUp, false);
+        document.addEventListener("keyup", self.handleKeyUp, false);
         
         self.cosRotationSpeed = Math.cos(self.rotationSpeed);
         self.cosRotationSpeedInversed = Math.cos(-self.rotationSpeed);
@@ -45,25 +45,25 @@ var Player = function(x,y){
     
     self.update = function(map){
         var changeX = self.dirX * self.speed,
-			changeY = self.dirY * self.speed;
+            changeY = self.dirY * self.speed;
         var oldDirX, oldPlaneX;
         
         if(self.up) {
-			if(map.isFree(Math.floor(self.x + changeX), Math.floor(self.y))) {
-				self.x += changeX;
-			}
-			if(map.isFree(Math.floor(self.x), Math.floor(self.y + changeY))) {
-				self.y += changeY;
-			}
-		}
-		else if(self.down) {
-			if(map.isFree(Math.floor(self.x - changeX), Math.floor(self.y))) {
-				self.x -= changeX;
-			}
-			if(map.isFree(Math.floor(self.x), Math.floor(self.y - changeY))) {
-				self.y -= changeY;
-			}
-		}
+            if(map.isFree(Math.floor(self.x + changeX), Math.floor(self.y))) {
+                self.x += changeX;
+            }
+            if(map.isFree(Math.floor(self.x), Math.floor(self.y + changeY))) {
+                self.y += changeY;
+            }
+        }
+        else if(self.down) {
+            if(map.isFree(Math.floor(self.x - changeX), Math.floor(self.y))) {
+                self.x -= changeX;
+            }
+            if(map.isFree(Math.floor(self.x), Math.floor(self.y - changeY))) {
+                self.y -= changeY;
+            }
+        }
         
         if(self.right){
             oldDirX = self.dirX;
@@ -96,18 +96,18 @@ var Player = function(x,y){
     
     function handleKeyPress(event, isKeyDown){
         if(event.keyCode == Keys.Left) {
-			self.left = isKeyDown;
-		}
+            self.left = isKeyDown;
+        }
         else if(event.keyCode == Keys.Right) {
-			self.right = isKeyDown;
-		}
+            self.right = isKeyDown;
+        }
         
         if(event.keyCode == Keys.Up) {
-			self.up = isKeyDown;
-		}
+            self.up = isKeyDown;
+        }
         else if(event.keyCode == Keys.Down) {
-			self.down = isKeyDown;
-		}
+            self.down = isKeyDown;
+        }
     }
     
     self.init();
@@ -118,26 +118,26 @@ var Map = function(){
     
     const mapData =
                [ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-				 1,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,1,
-				 1,0,1,1,0,1,1,0,0,1,1,0,0,0,0,0,0,1,0,1,
-				 1,0,1,1,0,1,1,0,0,0,0,0,1,1,0,1,0,0,0,1,
-				 1,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,1,0,1,
-				 1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,
-				 1,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,
-				 1,0,0,0,1,1,1,0,0,0,0,0,0,1,0,1,0,1,1,1,
-				 1,1,0,1,1,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,
-				 1,1,0,0,1,1,1,1,0,1,1,1,0,1,0,1,0,1,1,1,
-				 1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,
-				 1,1,1,0,0,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,
-				 1,1,1,1,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
-				 1,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
-				 1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
-				 1,1,0,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,
-				 1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,
-				 1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,
-				 1,1,1,1,1,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,
-				 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-			     ];  
+                 1,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,1,
+                 1,0,1,1,0,1,1,0,0,1,1,0,0,0,0,0,0,1,0,1,
+                 1,0,1,1,0,1,1,0,0,0,0,0,1,1,0,1,0,0,0,1,
+                 1,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,1,0,1,
+                 1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,
+                 1,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,
+                 1,0,0,0,1,1,1,0,0,0,0,0,0,1,0,1,0,1,1,1,
+                 1,1,0,1,1,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,
+                 1,1,0,0,1,1,1,1,0,1,1,1,0,1,0,1,0,1,1,1,
+                 1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,1,
+                 1,1,1,0,0,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,
+                 1,1,1,1,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
+                 1,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
+                 1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,
+                 1,1,0,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,
+                 1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,
+                 1,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,
+                 1,1,1,1,1,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,
+                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+                 ];  
     
     self.width = 20,
     self.height = 20,
@@ -149,9 +149,9 @@ var Map = function(){
         var version = 1;
         
         for(i=0; i<files.length; i++) {
-			self.textures[i] = new Image();
-			self.textures[i].src = files[i] + "?" + version;
-		}
+            self.textures[i] = new Image();
+            self.textures[i].src = files[i] + "?" + version;
+        }
         
         console.log(self.textures);
     },
@@ -162,9 +162,9 @@ var Map = function(){
     
     self.isFree = function(x,y){
         if(x < 0 || x >= self.width || y < 0 || y >= self.height) {
-			return false;
-		}
-		return mapData[y*self.width + x] == 0;
+            return false;
+        }
+        return mapData[y*self.width + x] == 0;
     },
     
     self.getTexture = function(x,y){
@@ -202,15 +202,15 @@ var Raycaster = function(){
         
         //draw floor/ceiling
         var grad = canvasCtx.createLinearGradient(0,canvHeight/2, 0,canvHeight);
-		grad.addColorStop(0, floorColor0);
-		grad.addColorStop(1, floorColor1);
-		canvasCtx.fillStyle = grad
-		canvasCtx.fillRect(0,canvHeight/2, canvWidth,canvHeight/2);
-		grad = canvasCtx.createLinearGradient(0, 0, 0, canvHeight/2);
-		grad.addColorStop(1, ceilingColor0);
-		grad.addColorStop(0, ceilingColor1 );
-		canvasCtx.fillStyle = grad;
-		canvasCtx.fillRect(0, 0, canvWidth,canvHeight/2);
+        grad.addColorStop(0, floorColor0);
+        grad.addColorStop(1, floorColor1);
+        canvasCtx.fillStyle = grad
+        canvasCtx.fillRect(0,canvHeight/2, canvWidth,canvHeight/2);
+        grad = canvasCtx.createLinearGradient(0, 0, 0, canvHeight/2);
+        grad.addColorStop(1, ceilingColor0);
+        grad.addColorStop(0, ceilingColor1 );
+        canvasCtx.fillStyle = grad;
+        canvasCtx.fillRect(0, 0, canvWidth,canvHeight/2);
         
         for(var columnIdx=0; columnIdx < canvWidth; columnIdx++){
             drawColumn(columnIdx,player,canvas,canvasCtx,zBuffer);
@@ -231,83 +231,83 @@ var Raycaster = function(){
     
     function drawColumn(columnIdx, player, canvas, canvasCtx, zBuffer){       
         var rayPositionX, rayPositionY, rayDirX, rayDirY, mx, my, deltaX,
-				deltaY, stepX, stepY, horiz, wallDistance, wallHeight,
-				wallX, drawStart, textureToDraw;
-			
+                deltaY, stepX, stepY, horiz, wallDistance, wallHeight,
+                wallX, drawStart, textureToDraw;
+            
         var cameraX = (2 * columnIdx / canvWidth) - 1;
-			rayPositionX = player.x;
-			rayPositionY = player.y;
-			rayDirX = player.dirX + player.cameraPlaneX*cameraX;
-			rayDirY = player.dirY + player.cameraPlaneY*cameraX;
-			mx = Math.floor(rayPositionX);
-			my = Math.floor(rayPositionY);
-			deltaX = Math.sqrt(1 + (rayDirY * rayDirY) / (rayDirX*rayDirX));
-			deltaY = Math.sqrt(1 + (rayDirX * rayDirX) / (rayDirY*rayDirY));
+            rayPositionX = player.x;
+            rayPositionY = player.y;
+            rayDirX = player.dirX + player.cameraPlaneX*cameraX;
+            rayDirY = player.dirY + player.cameraPlaneY*cameraX;
+            mx = Math.floor(rayPositionX);
+            my = Math.floor(rayPositionY);
+            deltaX = Math.sqrt(1 + (rayDirY * rayDirY) / (rayDirX*rayDirX));
+            deltaY = Math.sqrt(1 + (rayDirX * rayDirX) / (rayDirY*rayDirY));
 
-			// initial step for the ray
-			if(rayDirX < 0) {
-				stepX = -1;
-				dist_x = (rayPositionX - mx) * deltaX;
-			} else {
-				stepX = 1;
-				dist_x = (mx + 1 - rayPositionX) * deltaX;
-			}
-			if(rayDirY < 0) {
-				stepY = -1;
-				dist_y = (rayPositionY - my) * deltaY;
-			} else {
-				stepY = 1;
-				dist_y = (my + 1 - rayPositionY) * deltaY;
-			}
+            // initial step for the ray
+            if(rayDirX < 0) {
+                stepX = -1;
+                dist_x = (rayPositionX - mx) * deltaX;
+            } else {
+                stepX = 1;
+                dist_x = (mx + 1 - rayPositionX) * deltaX;
+            }
+            if(rayDirY < 0) {
+                stepY = -1;
+                dist_y = (rayPositionY - my) * deltaY;
+            } else {
+                stepY = 1;
+                dist_y = (my + 1 - rayPositionY) * deltaY;
+            }
 
-			// DDA
-			while(true) {
-				if(dist_x < dist_y) {
-					dist_x += deltaX;
-					mx += stepX;
-					horiz = true;
-				} else {
-					dist_y += deltaY;
-					my += stepY;
-					horiz = false;
-				}
+            // DDA
+            while(true) {
+                if(dist_x < dist_y) {
+                    dist_x += deltaX;
+                    mx += stepX;
+                    horiz = true;
+                } else {
+                    dist_y += deltaY;
+                    my += stepY;
+                    horiz = false;
+                }
 
-				if(!mainMap.isFree(mx, my)) {
-					break;
-				}
-			}
+                if(!mainMap.isFree(mx, my)) {
+                    break;
+                }
+            }
 
-			// wall distance
-			if(horiz) {
-				wallDistance = (mx - rayPositionX + (1 - stepX) / 2) / rayDirX;
-				wallX = rayPositionY + ((mx - rayPositionX + (1 - stepX) / 2) / rayDirX) * rayDirY;
-			} else {
-				wallDistance = (my - rayPositionY + (1 - stepY) / 2) / rayDirY;
-				wallX = rayPositionX + ((my - rayPositionY + (1 - stepY) / 2) / rayDirY) * rayDirX;
-			}
-			wallX -= Math.floor(wallX);
+            // wall distance
+            if(horiz) {
+                wallDistance = (mx - rayPositionX + (1 - stepX) / 2) / rayDirX;
+                wallX = rayPositionY + ((mx - rayPositionX + (1 - stepX) / 2) / rayDirX) * rayDirY;
+            } else {
+                wallDistance = (my - rayPositionY + (1 - stepY) / 2) / rayDirY;
+                wallX = rayPositionX + ((my - rayPositionY + (1 - stepY) / 2) / rayDirY) * rayDirX;
+            }
+            wallX -= Math.floor(wallX);
 
-			if(wallDistance < 0) {
-				wallDistance = -wallDistance;
-			}
+            if(wallDistance < 0) {
+                wallDistance = -wallDistance;
+            }
 
-			zBuffer[columnIdx] = wallDistance;
+            zBuffer[columnIdx] = wallDistance;
 
-			wallHeight = Math.abs(Math.floor(canvHeight / wallDistance));
-			drawStart = -wallHeight/2 +canvHeight/2;
+            wallHeight = Math.abs(Math.floor(canvHeight / wallDistance));
+            drawStart = -wallHeight/2 +canvHeight/2;
 
-			wallX = Math.floor(wallX * mainMap.getTexture(mx, my).width);
-			if(horiz && rayDirX > 0) {
-				wallX = mainMap.getTexture(mx, my).width - wallX -1;
-			}
-			if(!horiz && rayDirY < 0) {
-				wallX = mainMap.getTexture(mx, my).width - wallX -1;
-			}
+            wallX = Math.floor(wallX * mainMap.getTexture(mx, my).width);
+            if(horiz && rayDirX > 0) {
+                wallX = mainMap.getTexture(mx, my).width - wallX -1;
+            }
+            if(!horiz && rayDirY < 0) {
+                wallX = mainMap.getTexture(mx, my).width - wallX -1;
+            }
                         
-			textureToDraw = mainMap.getTexture(mx, my);
-			canvasCtx.drawImage(textureToDraw, wallX, 0, 1, textureToDraw.height, columnIdx, drawStart, 1, wallHeight);
+            textureToDraw = mainMap.getTexture(mx, my);
+            canvasCtx.drawImage(textureToDraw, wallX, 0, 1, textureToDraw.height, columnIdx, drawStart, 1, wallHeight);
 
-			// light
+            // light
             drawLight(wallHeight,columnIdx,drawStart);
     }
     
